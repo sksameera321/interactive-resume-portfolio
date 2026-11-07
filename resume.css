@@ -1,0 +1,383 @@
+/* ==========================================================================
+   ATS-Friendly & Semantic Resume Stylesheet
+   Designed for maximum ATS parser readability and crisp printing / PDF export.
+   ========================================================================== */
+
+:root {
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #4b5563;
+  --border-color: #cbd5e1;
+  --section-border: #1e293b;
+  --link-color: #0369a1;
+  --font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  --bg-page: #f1f5f9;
+  --bg-sheet: #ffffff;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-size: 10.5pt;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Screen-Only Action Bar
+   ========================================================================== */
+.action-bar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 0.85rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.action-container {
+  max-width: 8.5in;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.back-btn {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+.back-btn:hover {
+  background: #334155;
+  color: #ffffff;
+}
+
+.print-btn {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.print-btn:hover {
+  background: #0369a1;
+  box-shadow: 0 0 12px rgba(2, 132, 199, 0.4);
+}
+
+/* ==========================================================================
+   Resume Sheet Layout (Standard Letter / A4 Proportions)
+   ========================================================================== */
+.resume-sheet {
+  max-width: 8.5in;
+  margin: 2rem auto;
+  padding: 0.7in 0.8in;
+  background: var(--bg-sheet);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Header & Contact Info
+   ========================================================================== */
+.resume-header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 2px solid var(--section-border);
+}
+
+.candidate-name {
+  font-size: 24pt;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #0f172a;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.candidate-role {
+  font-size: 12pt;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem 0.65rem;
+  font-style: normal;
+  font-size: 9.5pt;
+  color: var(--text-secondary);
+}
+
+.contact-info a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-info a:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+.separator {
+  color: #94a3b8;
+  font-weight: 300;
+}
+
+/* ==========================================================================
+   Section Headings (Standard ATS Structure)
+   ========================================================================== */
+.resume-section {
+  margin-bottom: 1.25rem;
+}
+
+.section-title {
+  font-size: 11pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0f172a;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.65rem;
+  border-bottom: 1.5px solid var(--section-border);
+}
+
+/* Summary */
+.summary-text {
+  font-size: 10pt;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  text-align: justify;
+}
+
+/* Technical Skills */
+.skills-category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.skill-row {
+  font-size: 9.8pt;
+  line-height: 1.45;
+}
+
+.skill-label {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-right: 0.35rem;
+}
+
+.skill-values {
+  color: var(--text-secondary);
+}
+
+/* Experience & Project Entries */
+.experience-entry,
+.project-entry,
+.education-entry {
+  margin-bottom: 1rem;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.experience-entry:last-child,
+.project-entry:last-child,
+.education-entry:last-child {
+  margin-bottom: 0;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.entry-role {
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.entry-company {
+  font-size: 10pt;
+  font-weight: 600;
+  color: #334155;
+}
+
+.entry-meta {
+  font-size: 9.2pt;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.entry-meta a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.project-subtitle {
+  font-weight: 500;
+  color: #475569;
+}
+
+.tech-stack-used {
+  font-size: 9.2pt;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.tech-stack-used strong {
+  color: var(--text-primary);
+}
+
+/* Bullets */
+.entry-bullets {
+  list-style-type: disc;
+  margin-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.entry-bullets li {
+  font-size: 9.6pt;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.coursework-text {
+  font-size: 9.5pt;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+.cert-list {
+  list-style-type: disc;
+  margin-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 9.6pt;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Print Optimization & PDF Generation
+   ========================================================================== */
+@media print {
+  @page {
+    margin: 0.45in 0.55in;
+    size: letter;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 9.8pt;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .resume-sheet {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  .resume-header {
+    border-bottom: 2px solid #000000 !important;
+  }
+
+  .section-title {
+    border-bottom: 1.5px solid #000000 !important;
+    color: #000000 !important;
+  }
+
+  .candidate-name {
+    color: #000000 !important;
+  }
+
+  .candidate-role, .entry-role, .entry-company {
+    color: #000000 !important;
+  }
+
+  .summary-text, .entry-bullets li, .skill-values, .coursework-text, .cert-list li {
+    color: #111111 !important;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: none !important;
+  }
+
+  .experience-entry,
+  .project-entry,
+  .education-entry {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+/* Mobile Screens */
+@media screen and (max-width: 768px) {
+  .resume-sheet {
+    margin: 1rem auto;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .candidate-name {
+    font-size: 18pt;
+  }
+
+  .entry-header {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+}
