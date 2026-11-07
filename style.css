@@ -630,6 +630,8 @@ h1, h2, h3, h4 {
   user-select: none;
   transform-origin: center bottom;
   will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   display: flex;
   flex-direction: column;
 }
