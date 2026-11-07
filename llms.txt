@@ -1,0 +1,69 @@
+# Sameera Bhanu — Developer Profile & Portfolio
+
+> Frontend Developer and UI Engineer specializing in JavaScript (ES6+), React, semantic HTML5, CSS3, Neumorphic/Skeuomorphic design systems, and responsive web performance.
+
+## Identity & Core Details
+- Full Name: Sameera Bhanu (Shaik Sameera Bhanu)
+- Role: Frontend Developer & Software Engineer
+- Location: India (Open to Remote Opportunities Globally)
+- Email: sksameera321s@gmail.com
+- LinkedIn: http://linkedin.com/in/shaik-sameera-bhanu-86b67341a/
+- GitHub: https://github.com/sksameera321
+- Live Portfolio: https://sksameera321.github.io/interactive-resume-portfolio/
+- ATS Resume: https://sksameera321.github.io/interactive-resume-portfolio/resume.html
+
+## Summary
+Sameera Bhanu builds responsive, high-performance web applications with semantic HTML5, CSS3, modern JavaScript, and React. She creates custom design systems including Neumorphic (Soft UI) and tactile interfaces, interactive canvas visualizations (FlowField particle wind), and 3D card physics (CardStack).
+
+## Core Technical Skills
+- Frontend Core: HTML5 (Semantic Structure, Accessibility, ARIA), CSS3 (Flexbox, CSS Grid, Custom Properties, Keyframe Animations), JavaScript (ES6+, Async/Await, DOM APIs, Event Delegation)
+- Frameworks & Libraries: React, Kokonut UI component adaptations, FontAwesome, Canvas API
+- Design Systems & Styling: Neumorphism (Soft UI dual shadows), Skeuomorphic tactile design, Mobile-first Responsive Design
+- Development Tools: Git, GitHub, Browser DevTools, VS Code, REST APIs, LocalStorage
+
+## Verified Projects & Video Demos
+1. Multi-Project Overview Walkthrough (Reel)
+   - Duration: 0:37
+   - Video Walkthrough: https://drive.google.com/file/d/1OWFJUhRv1ZI_E-PanuBKt-h2xUL3qeXV/view
+
+2. Amazon Storefront Clone
+   - Category: E-Commerce Web Application
+   - Duration: 0:15
+   - Description: High-fidelity e-commerce clone featuring interactive product listings, category search filtering, shopping cart state persistence using browser LocalStorage, and responsive checkout flows.
+   - Video Demo: https://drive.google.com/file/d/1vBxMT2haRQDCjNWgYsZ4KhKN909NZv04/view
+   - Repository: https://github.com/sksameera321/my-amazon-project
+
+3. Restaurant Menu & Ordering System
+   - Category: Food & Dining Web Application
+   - Duration: 0:24
+   - Description: Interactive dining menu platform with categorized food selections, dietary filtering, dynamic price calculation, and mobile-first responsive layout.
+   - Video Demo: https://drive.google.com/file/d/12rQlzYPinf89SOhVtE6lbwoPuD80IWwC/view
+   - Repository: https://github.com/sksameera321/my-kiya.in
+
+4. Game Hub Arcade Portal
+   - Category: Web Gaming Portal
+   - Duration: 0:21
+   - Description: Curated retro and casual browser gaming hub with active game state management, responsive canvas/DOM rendering, and score tracking.
+   - Video Demo: https://drive.google.com/file/d/1Ia3XCRzb9veiDdnWv--5ELKrrxatajaT/view
+   - Repository: https://github.com/sksameera321/hub
+
+5. AI Tools Directory Hub
+   - Category: Developer Tool Directory
+   - Duration: 0:20
+   - Description: Comprehensive resource directory aggregating modern AI tools by category, pricing model, and developer capabilities with dynamic search filtering.
+   - Video Demo: https://drive.google.com/file/d/1sZB9c1j2Q6eUAvfUvzlQ_1pTnuAzO-9f/view
+   - Repository: https://github.com/sksameera321/Ai-hub
+
+6. Interactive Rock Paper Scissors Game
+   - Category: Interactive Browser Game
+   - Duration: 0:31
+   - Description: Interactive browser game with algorithmic move randomization, score persistence, custom CSS animations, and keyboard accessibility.
+   - Video Demo: https://drive.google.com/file/d/10ZMaAQo4xXNs3P36zQYvPwB21Pd2r3Fh/view
+
+## Frequently Asked Questions (FAQ)
+- Q: Who is Sameera Bhanu?
+  A: Sameera Bhanu is a Frontend Developer and UI Engineer specializing in JavaScript (ES6+), React, semantic HTML5, CSS3, and tactile design systems such as Neumorphism and Skeuomorphism.
+- Q: What services or roles is Sameera open to?
+  A: Sameera is open to full-time frontend software engineering positions, contract roles, and technical freelance web development projects globally.
+- Q: How to contact Sameera Bhanu?
+  A: Via email at sksameera321s@gmail.com or via LinkedIn at http://linkedin.com/in/shaik-sameera-bhanu-86b67341a/.
