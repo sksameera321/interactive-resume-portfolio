@@ -1,18 +1,16 @@
 /* ==========================================================================
-   ATS-Friendly & Semantic Resume Stylesheet
-   Designed for maximum ATS parser readability and crisp printing / PDF export.
+   ATS-Compliant Resume Stylesheet
+   Minimal, semantic, high-contrast, designed for ATS parsers and PDF print.
    ========================================================================== */
 
 :root {
-  --text-primary: #111827;
+  --text-main: #111827;
   --text-secondary: #374151;
-  --text-muted: #4b5563;
-  --border-color: #cbd5e1;
-  --section-border: #1e293b;
-  --link-color: #0369a1;
-  --font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
-  --bg-page: #f1f5f9;
+  --text-muted: #6b7280;
+  --border-line: #111827;
+  --bg-page: #f8fafc;
   --bg-sheet: #ffffff;
+  --font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 *, *::before, *::after {
@@ -22,27 +20,22 @@
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-stack);
   background-color: var(--bg-page);
-  color: var(--text-primary);
-  line-height: 1.5;
-  font-size: 10.5pt;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-main);
+  line-height: 1.45;
+  font-size: 10pt;
 }
 
-/* ==========================================================================
-   Screen-Only Action Bar
-   ========================================================================== */
+/* Screen Action Bar */
 .action-bar {
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   background: #0f172a;
-  color: #f8fafc;
-  padding: 0.85rem 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+  padding: 0.65rem 1.5rem;
   z-index: 100;
 }
 
@@ -57,257 +50,230 @@ body {
 .action-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1.1rem;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
   text-decoration: none;
-  transition: all 0.2s ease;
-  border: none;
+  cursor: pointer;
+  border: 1px solid transparent;
 }
 
 .back-btn {
   background: #1e293b;
-  color: #e2e8f0;
+  color: #f1f5f9;
 }
 
 .back-btn:hover {
   background: #334155;
-  color: #ffffff;
 }
 
 .print-btn {
-  background: #0284c7;
+  background: #2563eb;
   color: #ffffff;
 }
 
 .print-btn:hover {
-  background: #0369a1;
-  box-shadow: 0 0 12px rgba(2, 132, 199, 0.4);
+  background: #1d4ed8;
 }
 
-/* ==========================================================================
-   Resume Sheet Layout (Standard Letter / A4 Proportions)
-   ========================================================================== */
+/* Resume Sheet */
 .resume-sheet {
   max-width: 8.5in;
   margin: 2rem auto;
-  padding: 0.7in 0.8in;
+  padding: 0.65in 0.75in;
   background: var(--bg-sheet);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* ==========================================================================
-   Header & Contact Info
-   ========================================================================== */
+/* Header */
 .resume-header {
   text-align: center;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 2px solid var(--section-border);
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1.5px solid var(--border-line);
 }
 
 .candidate-name {
-  font-size: 24pt;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: #0f172a;
-  margin-bottom: 0.2rem;
-  text-transform: uppercase;
+  font-size: 20pt;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-main);
+  margin-bottom: 0.15rem;
 }
 
 .candidate-role {
-  font-size: 12pt;
+  font-size: 11pt;
   font-weight: 600;
-  color: #334155;
-  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
 }
 
 .contact-info {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 0.4rem 0.65rem;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.6rem;
   font-style: normal;
-  font-size: 9.5pt;
-  color: var(--text-secondary);
+  font-size: 9pt;
+  color: var(--text-muted);
 }
 
 .contact-info a {
-  color: var(--text-primary);
+  color: var(--text-main);
   text-decoration: none;
-  font-weight: 500;
 }
 
 .contact-info a:hover {
-  color: var(--link-color);
   text-decoration: underline;
 }
 
-.separator {
-  color: #94a3b8;
-  font-weight: 300;
+.sep {
+  color: #9ca3af;
 }
 
-/* ==========================================================================
-   Section Headings (Standard ATS Structure)
-   ========================================================================== */
+/* Sections */
 .resume-section {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .section-title {
-  font-size: 11pt;
+  font-size: 10.5pt;
   font-weight: 700;
-  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #0f172a;
-  padding-bottom: 0.25rem;
-  margin-bottom: 0.65rem;
-  border-bottom: 1.5px solid var(--section-border);
+  letter-spacing: 0.05em;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-line);
+  padding-bottom: 0.15rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Summary */
 .summary-text {
-  font-size: 10pt;
-  line-height: 1.55;
+  font-size: 9.5pt;
+  line-height: 1.5;
   color: var(--text-secondary);
-  text-align: justify;
 }
 
-/* Technical Skills */
-.skills-category-list {
+/* Skills */
+.skills-list {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.25rem;
 }
 
-.skill-row {
-  font-size: 9.8pt;
-  line-height: 1.45;
+.skill-item {
+  font-size: 9.5pt;
+  line-height: 1.4;
 }
 
-.skill-label {
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-right: 0.35rem;
+.skill-group {
+  font-weight: 600;
+  color: var(--text-main);
+  margin-right: 0.3rem;
 }
 
-.skill-values {
+.skill-detail {
   color: var(--text-secondary);
 }
 
-/* Experience & Project Entries */
-.experience-entry,
-.project-entry,
-.education-entry {
-  margin-bottom: 1rem;
+/* Experience & Projects */
+.job-entry, .project-entry, .edu-entry {
+  margin-bottom: 0.85rem;
   page-break-inside: avoid;
   break-inside: avoid;
 }
 
-.experience-entry:last-child,
-.project-entry:last-child,
-.education-entry:last-child {
+.job-entry:last-child, .project-entry:last-child, .edu-entry:last-child {
   margin-bottom: 0;
 }
 
-.entry-header {
+.job-header, .project-header, .edu-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 0.25rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
-.entry-role {
-  font-size: 10.5pt;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.entry-company {
+.job-title, .project-name, .edu-degree {
   font-size: 10pt;
-  font-weight: 600;
-  color: #334155;
+  font-weight: 700;
+  color: var(--text-main);
 }
 
-.entry-meta {
-  font-size: 9.2pt;
-  font-weight: 600;
+.job-company, .edu-school {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.job-meta, .edu-meta {
+  font-size: 9pt;
   color: var(--text-muted);
 }
 
-.entry-meta a {
-  color: var(--link-color);
+.project-link a {
+  font-size: 8.8pt;
+  color: var(--text-secondary);
   text-decoration: none;
 }
 
-.project-subtitle {
-  font-weight: 500;
-  color: #475569;
+.project-link a:hover {
+  text-decoration: underline;
 }
 
-.tech-stack-used {
-  font-size: 9.2pt;
+.project-tech {
+  font-size: 9pt;
   color: var(--text-muted);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
-.tech-stack-used strong {
-  color: var(--text-primary);
+.project-tech strong {
+  color: var(--text-secondary);
 }
 
-/* Bullets */
-.entry-bullets {
+.job-bullets, .project-bullets {
   list-style-type: disc;
-  margin-left: 1.25rem;
+  margin-left: 1.15rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
-.entry-bullets li {
-  font-size: 9.6pt;
-  line-height: 1.45;
+.job-bullets li, .project-bullets li {
+  font-size: 9.2pt;
+  line-height: 1.4;
   color: var(--text-secondary);
 }
 
-.coursework-text {
-  font-size: 9.5pt;
-  line-height: 1.45;
+.edu-details {
+  font-size: 9pt;
   color: var(--text-secondary);
-  margin-top: 0.25rem;
+  margin-top: 0.2rem;
 }
 
 .cert-list {
   list-style-type: disc;
-  margin-left: 1.25rem;
+  margin-left: 1.15rem;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  font-size: 9.6pt;
+  gap: 0.25rem;
+  font-size: 9.2pt;
   color: var(--text-secondary);
 }
 
-/* ==========================================================================
-   Print Optimization & PDF Generation
-   ========================================================================== */
+/* Print Rules */
 @media print {
   @page {
-    margin: 0.45in 0.55in;
+    margin: 0.4in 0.5in;
     size: letter;
   }
 
   body {
     background: #ffffff !important;
     color: #000000 !important;
-    font-size: 9.8pt;
   }
 
   .no-print {
@@ -319,28 +285,6 @@ body {
     margin: 0 !important;
     padding: 0 !important;
     box-shadow: none !important;
-    border-radius: 0 !important;
-  }
-
-  .resume-header {
-    border-bottom: 2px solid #000000 !important;
-  }
-
-  .section-title {
-    border-bottom: 1.5px solid #000000 !important;
-    color: #000000 !important;
-  }
-
-  .candidate-name {
-    color: #000000 !important;
-  }
-
-  .candidate-role, .entry-role, .entry-company {
-    color: #000000 !important;
-  }
-
-  .summary-text, .entry-bullets li, .skill-values, .coursework-text, .cert-list li {
-    color: #111111 !important;
   }
 
   a {
@@ -348,36 +292,29 @@ body {
     text-decoration: none !important;
   }
 
-  .experience-entry,
-  .project-entry,
-  .education-entry {
+  .job-entry, .project-entry, .edu-entry {
     page-break-inside: avoid;
     break-inside: avoid;
   }
 }
 
-/* Mobile Screens */
 @media screen and (max-width: 768px) {
   .resume-sheet {
-    margin: 1rem auto;
-    padding: 1.5rem 1.25rem;
+    margin: 0.75rem auto;
+    padding: 1.25rem 1rem;
   }
 
-  .candidate-name {
-    font-size: 18pt;
-  }
-
-  .entry-header {
+  .job-header, .project-header, .edu-header {
     flex-direction: column;
     gap: 0.1rem;
   }
 
-  .separator {
-    display: none;
-  }
-
   .contact-info {
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.25rem;
+  }
+
+  .sep {
+    display: none;
   }
 }
