@@ -14,7 +14,7 @@
 - ATS Resume: https://sksameera321.github.io/interactive-resume-portfolio/resume.html
 
 ## Summary
-Sameera Bhanu builds responsive, high-performance web applications with semantic HTML5, CSS3, modern JavaScript, and React. She creates custom design systems including Neumorphic (Soft UI) and tactile interfaces, interactive canvas visualizations (FlowField particle wind), and 3D card physics (CardStack).
+Sameera Bhanu is a fast-learning 1st-year B.Tech CSE student who embarked on frontend engineering four months ago (July 2026). In four months of intensive development, she has engineered 6+ practical web applications from scratch using semantic HTML5, CSS3, modern JavaScript, and React. She creates custom design systems including Neumorphic (Soft UI) interfaces, interactive canvas visualizations (FlowField particle wind), and 3D card physics (CardStack).
 
 ## Core Technical Skills
 - Frontend Core: HTML5 (Semantic Structure, Accessibility, ARIA), CSS3 (Flexbox, CSS Grid, Custom Properties, Keyframe Animations), JavaScript (ES6+, Async/Await, DOM APIs, Event Delegation)
