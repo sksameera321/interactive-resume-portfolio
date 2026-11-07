@@ -4,8 +4,12 @@
 const themeToggle = document.getElementById('themeToggle');
 const htmlElement = document.documentElement;
 
-const savedTheme = localStorage.getItem('theme') || 'dark';
-htmlElement.setAttribute('data-theme', savedTheme);
+// Theme is already resolved synchronously in <head> to eliminate FOUC.
+if (!htmlElement.getAttribute('data-theme')) {
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  htmlElement.setAttribute('data-theme', savedTheme);
+  htmlElement.classList.toggle('dark', savedTheme === 'dark');
+}
 
 if (themeToggle) {
   themeToggle.addEventListener('click', (e) => {
