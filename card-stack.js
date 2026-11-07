@@ -77,11 +77,17 @@ class CardStack {
           pointerEvents: 'none'
         };
       case 2:
-      default:
         return {
           transform: 'translate3d(0, 32px, -80px) scale(0.90) rotate(-1.5deg)',
           opacity: '0.65',
           zIndex: 10,
+          pointerEvents: 'none'
+        };
+      default:
+        return {
+          transform: 'translate3d(0, 44px, -120px) scale(0.85)',
+          opacity: '0',
+          zIndex: 5,
           pointerEvents: 'none'
         };
     }
