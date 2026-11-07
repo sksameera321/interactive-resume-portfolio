@@ -17,7 +17,7 @@
 
 ---
 
-## 🌟 Key Architecture & Features
+## Key Architecture & Features
 
 ### 1. Tactile Neumorphic (Soft UI) Design System
 - **Off-Surface Dual Lighting**: Directional specular highlights (top-left) and deep shadow drops (bottom-right) engineered on calibrated surfaces (`#131519` dark mode / `#e6ecf4` light mode).
@@ -46,21 +46,21 @@
 
 ---
 
-## 🚀 Featured Projects & Verified Video Demos
+## Featured Engineering Projects
 
 | # | Project | Description | Tech Stack | Repository | Video Demo |
 |:---:|:---|:---|:---|:---:|:---:|
-| 🌟 | **[Interactive Portfolio](https://sksameera321.github.io/interactive-resume-portfolio/)** | Tactile Neumorphic developer portfolio with Kokonut UI CardStack, FlowField wind canvas, and printable ATS resume | Vanilla JS, CSS3, HTML5, Canvas | [Code](https://github.com/sksameera321/interactive-resume-portfolio) | [Live Site](https://sksameera321.github.io/interactive-resume-portfolio/) |
+| 00 | **[Interactive Portfolio](https://sksameera321.github.io/interactive-resume-portfolio/)** | Tactile Neumorphic developer portfolio with Kokonut UI CardStack, FlowField wind canvas, and printable ATS resume | Vanilla JS, CSS3, HTML5, Canvas | [Code](https://github.com/sksameera321/interactive-resume-portfolio) | [Live Site](https://sksameera321.github.io/interactive-resume-portfolio/) |
 | 01 | **Amazon Storefront Clone** | High-fidelity e-commerce clone featuring product grids, search filtering, LocalStorage cart state, and checkout flows | HTML5, CSS3, JS, LocalStorage | [Code](https://github.com/sksameera321/my-amazon-project) | [0:15 Demo](https://drive.google.com/file/d/1vBxMT2haRQDCjNWgYsZ4KhKN909NZv04/view) |
 | 02 | **Restaurant Menu & Ordering System** | Interactive dining menu platform with food category navigation, dietary filtering, and dynamic pricing | HTML5, CSS Grid, JavaScript | [Code](https://github.com/sksameera321/my-kiya.in) | [0:24 Demo](https://drive.google.com/file/d/12rQlzYPinf89SOhVtE6lbwoPuD80IWwC/view) |
 | 03 | **Game Hub Arcade Portal** | Curated browser gaming portal with state tracking, interactive canvas/DOM rendering, and high scores | HTML5, CSS3, JavaScript | [Code](https://github.com/sksameera321/hub) | [0:21 Demo](https://drive.google.com/file/d/1Ia3XCRzb9veiDdnWv--5ELKrrxatajaT/view) |
 | 04 | **AI Tools Directory Hub** | Curated developer directory aggregating modern AI tools with dynamic search and model capabilities | HTML5, CSS3, JavaScript | [Code](https://github.com/sksameera321/Ai-hub) | [0:20 Demo](https://drive.google.com/file/d/1sZB9c1j2Q6eUAvfUvzlQ_1pTnuAzO-9f/view) |
 | 05 | **Interactive Rock Paper Scissors Game** | Interactive browser game featuring algorithmic move randomization, score persistence, and CSS animations | HTML5, CSS3, JavaScript | [Code](https://github.com/sksameera321/my-game-project) | [0:31 Demo](https://drive.google.com/file/d/10ZMaAQo4xXNs3P36zQYvPwB21Pd2r3Fh/view) |
-| 🎬 | **Multi-Project Walkthrough Reel** | Comprehensive walkthrough video covering multiple frontend projects and UI engineering workflows | UI/UX & Web Development | — | [0:37 Reel](https://drive.google.com/file/d/1OWFJUhRv1ZI_E-PanuBKt-h2xUL3qeXV/view) |
+| 06 | **Multi-Project Walkthrough Reel** | Comprehensive walkthrough video covering multiple frontend projects and UI engineering workflows | UI/UX & Web Development | — | [0:37 Reel](https://drive.google.com/file/d/1OWFJUhRv1ZI_E-PanuBKt-h2xUL3qeXV/view) |
 
 ---
 
-## 🎓 Education & Development Journey
+## Education & Development Journey
 
 - **B.Tech in Computer Science & Engineering**: [Shri Vishnu Engineering College for Women (SVECW)](https://www.linkedin.com/school/15124808/), Bhimavaram &mdash; *1st Year (Expected Graduation: 2029–30)*
 - **Intermediate (MPC)**: VIT Junior College &mdash; *98% (982/1000), AP EAMCET Qualified*
@@ -68,7 +68,7 @@
 
 ---
 
-## 📂 Project Directory Structure
+## Directory Architecture
 
 ```text
 interactive-resume-portfolio/
@@ -88,7 +88,7 @@ interactive-resume-portfolio/
 
 ---
 
-## 💻 Local Development
+## Local Development
 
 Clone the repository and run the local development server:
 
@@ -105,7 +105,7 @@ Open `http://localhost:3000` in your browser.
 
 ---
 
-## 📬 Contact & Connect
+## Contact & Inquiries
 
 - **Author**: Sameera Bhanu (Shaik Sameera Bhanu)
 - **Role**: Frontend Developer & UI Engineer
