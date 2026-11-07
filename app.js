@@ -105,25 +105,3 @@ function highlightActiveNav() {
 }
 
 window.addEventListener('scroll', highlightActiveNav);
-
-// ==========================================================================
-// Contact Form Feedback
-// ==========================================================================
-const contactForm = document.getElementById('contactForm');
-const formFeedback = document.getElementById('formFeedback');
-
-if (contactForm && formFeedback) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-
-    formFeedback.textContent = `Thanks, ${name}. Message received! You can also email sksameera321s@gmail.com directly.`;
-    formFeedback.className = 'form-feedback success';
-
-    contactForm.reset();
-
-    setTimeout(() => {
-      formFeedback.style.display = 'none';
-    }, 6000);
-  });
-}
