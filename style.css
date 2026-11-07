@@ -32,6 +32,13 @@
   --radius-lg: 16px;
 
   --transition: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Skeuomorphic Tactile Lighting Tokens (Dark) */
+  --skeu-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+  --skeu-bevel: inset 0 1px 0 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 0 rgba(0, 0, 0, 0.4);
+  --skeu-drop-btn: 0 1px 2px rgba(0, 0, 0, 0.4), 0 3px 8px -1px rgba(0, 0, 0, 0.5);
+  --skeu-drop-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 20px 45px -10px rgba(0, 0, 0, 0.6);
+  --skeu-inset-groove: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* Light Theme */
@@ -54,6 +61,13 @@
 
   --highlight: #0284c7;
   --highlight-bg: rgba(2, 132, 199, 0.08);
+
+  /* Skeuomorphic Tactile Lighting Tokens (Light) */
+  --skeu-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+  --skeu-bevel: inset 0 1px 0 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+  --skeu-drop-btn: 0 1px 2px rgba(0, 0, 0, 0.08), 0 3px 6px -1px rgba(0, 0, 0, 0.12);
+  --skeu-drop-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 18px 36px -10px rgba(0, 0, 0, 0.12);
+  --skeu-inset-groove: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 /* Reset & Basics */
@@ -126,7 +140,7 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   Buttons
+   Buttons (Tactile Skeuomorphic Engineering)
    ========================================================================== */
 .btn {
   display: inline-flex;
@@ -139,40 +153,85 @@ h1, h2, h3, h4 {
   padding: 0.6rem 1.15rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  border: 1px solid transparent;
+  border: 1px solid var(--border);
+  position: relative;
   transition: all var(--transition);
+  user-select: none;
+}
+
+.btn:active {
+  transform: translateY(1.5px) scale(0.985);
 }
 
 .btn-primary {
-  background-color: var(--accent);
-  color: var(--accent-contrast);
+  background: linear-gradient(180deg, #ffffff 0%, #e4e4e7 100%);
+  color: #09090b;
+  font-weight: 600;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .btn-primary {
+  background: linear-gradient(180deg, #27272a 0%, #09090b 100%);
+  color: #ffffff;
+  border-color: #09090b;
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.6),
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
+  filter: brightness(1.05);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 1),
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.btn-primary:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
 .btn-secondary {
-  background-color: var(--bg-card);
+  background: linear-gradient(180deg, rgba(39, 39, 42, 0.8) 0%, rgba(24, 24, 27, 0.9) 100%);
   border-color: var(--border);
   color: var(--text);
+  box-shadow: var(--skeu-bevel), var(--skeu-drop-btn);
+}
+
+[data-theme="light"] .btn-secondary {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f4f5 100%);
+  border-color: #d4d4d8;
+  color: #09090b;
+  box-shadow: var(--skeu-bevel), var(--skeu-drop-btn);
 }
 
 .btn-secondary:hover {
-  background-color: var(--bg-card-hover);
   border-color: var(--border-focus);
+  background: linear-gradient(180deg, rgba(50, 50, 56, 0.9) 0%, rgba(32, 32, 36, 0.95) 100%);
+}
+
+.btn-secondary:active {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .btn-outline {
-  background-color: transparent;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0.04) 100%);
   border-color: var(--border);
   color: var(--text-muted);
+  box-shadow: var(--skeu-bevel);
 }
 
 .btn-outline:hover {
   color: var(--text);
   border-color: var(--border-focus);
-  background-color: var(--bg-subtle);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0.06) 100%);
 }
 
 .btn-icon {
@@ -180,15 +239,27 @@ h1, h2, h3, h4 {
   height: 38px;
   padding: 0;
   border-radius: var(--radius-sm);
-  background-color: var(--bg-card);
+  background: linear-gradient(180deg, rgba(39, 39, 42, 0.8) 0%, rgba(24, 24, 27, 0.9) 100%);
   border: 1px solid var(--border);
   color: var(--text-muted);
   font-size: 1rem;
+  box-shadow: var(--skeu-bevel), var(--skeu-drop-btn);
+}
+
+[data-theme="light"] .btn-icon {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f4f5 100%);
+  border-color: #d4d4d8;
+  color: #52525b;
 }
 
 .btn-icon:hover {
   color: var(--text);
   border-color: var(--border-focus);
+}
+
+.btn-icon:active {
+  transform: translateY(1.5px) scale(0.97);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .btn-sm {
@@ -287,13 +358,20 @@ h1, h2, h3, h4 {
   width: 52px;
   height: 28px;
   border-radius: 9999px;
-  background-color: var(--bg-card);
+  background: linear-gradient(180deg, #101014 0%, #1a1a1f 100%);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
   padding: 2px;
   position: relative;
+  box-shadow: var(--skeu-inset-groove);
   transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+[data-theme="light"] .switch-track {
+  background: linear-gradient(180deg, #e4e4e7 0%, #f4f4f5 100%);
+  border-color: #d4d4d8;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .kokonut-switch:hover .switch-track {
@@ -304,21 +382,23 @@ h1, h2, h3, h4 {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--text);
-  color: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.72rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, color 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Dark mode */
+/* Dark mode - Tactile brushed silver sphere/puck */
 [data-theme="dark"] .switch-thumb {
   transform: translateX(2px);
-  background: #fafafa;
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #e4e4e7 65%, #a1a1aa 100%);
   color: #09090b;
+  box-shadow: 
+    0 2px 5px rgba(0, 0, 0, 0.5), 
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px #ffffff,
+    inset 0 -1px 1px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .switch-thumb .sun-icon {
@@ -328,11 +408,16 @@ h1, h2, h3, h4 {
   display: block;
 }
 
-/* Light mode */
+/* Light mode - Tactile matte obsidian toggle puck */
 [data-theme="light"] .switch-thumb {
   transform: translateX(24px);
-  background: #09090b;
+  background: radial-gradient(circle at 35% 30%, #3f3f46 0%, #27272a 65%, #09090b 100%);
   color: #fafafa;
+  box-shadow: 
+    0 2px 5px rgba(0, 0, 0, 0.25), 
+    0 1px 2px rgba(0, 0, 0, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.6);
 }
 
 [data-theme="light"] .switch-thumb .sun-icon {
@@ -435,21 +520,27 @@ h1, h2, h3, h4 {
   background-color: rgba(255, 255, 255, 0.75);
 }
 
-/* Focus Card - Frosted Glass immersed in the Wind field */
+/* Focus Card - Skeuomorphic Frosted Glass */
 .focus-card {
-  background-color: rgba(24, 24, 27, 0.55);
+  background: linear-gradient(160deg, rgba(30, 30, 36, 0.6) 0%, rgba(18, 18, 22, 0.75) 100%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-md);
   padding: 1.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35),
+    var(--skeu-drop-card);
 }
 
 [data-theme="light"] .focus-card {
-  background-color: rgba(255, 255, 255, 0.65);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.85) 0%, rgba(244, 244, 248, 0.75) 100%);
   border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.06),
+    var(--skeu-drop-card);
 }
 
 .focus-header {
@@ -578,7 +669,7 @@ h1, h2, h3, h4 {
   width: 38px;
   height: 38px;
   border-radius: var(--radius-sm);
-  background-color: var(--bg-card);
+  background: linear-gradient(180deg, rgba(39, 39, 42, 0.85) 0%, rgba(24, 24, 27, 0.95) 100%);
   border: 1px solid var(--border);
   color: var(--text-muted);
   cursor: pointer;
@@ -586,14 +677,24 @@ h1, h2, h3, h4 {
   align-items: center;
   justify-content: center;
   font-size: 0.85rem;
+  box-shadow: var(--skeu-bevel), var(--skeu-drop-btn);
   transition: all var(--transition);
+}
+
+[data-theme="light"] .stack-arrow-btn {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f4f5 100%);
+  border-color: #d4d4d8;
+  color: #52525b;
 }
 
 .stack-arrow-btn:hover {
   color: var(--text);
   border-color: var(--border-focus);
-  background-color: var(--bg-card-hover);
-  transform: translateY(-1px);
+}
+
+.stack-arrow-btn:active {
+  transform: translateY(1.5px) scale(0.97);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .stack-hint {
@@ -616,16 +717,21 @@ h1, h2, h3, h4 {
   transform-style: preserve-3d;
 }
 
+/* Skeuomorphic Tactile Playing Card Deck */
 .stack-card {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border);
+  background: linear-gradient(175deg, #1f1f23 0%, #151518 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-lg);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+  box-shadow: 
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1.5px 0 0 rgba(0, 0, 0, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 22px 50px -10px rgba(0, 0, 0, 0.65);
   cursor: grab;
   user-select: none;
   transform-origin: center bottom;
@@ -637,7 +743,13 @@ h1, h2, h3, h4 {
 }
 
 [data-theme="light"] .stack-card {
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(175deg, #ffffff 0%, #f4f4f7 100%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 1),
+    inset 0 -1.5px 0 0 rgba(0, 0, 0, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 20px 40px -10px rgba(0, 0, 0, 0.14);
 }
 
 .stack-card:active {
@@ -681,11 +793,12 @@ h1, h2, h3, h4 {
 .stack-card-status {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  padding: 0.15rem 0.55rem;
+  padding: 0.18rem 0.6rem;
   border-radius: 9999px;
   background-color: var(--highlight-bg);
   color: var(--highlight);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .stack-card-title {
@@ -709,6 +822,7 @@ h1, h2, h3, h4 {
   margin-bottom: 1.25rem;
 }
 
+/* Debossed physical tags */
 .stack-card-tags span {
   font-size: 0.76rem;
   font-family: var(--font-mono);
@@ -717,6 +831,11 @@ h1, h2, h3, h4 {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   color: var(--text-dim);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="light"] .stack-card-tags span {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .stack-card-footer {
@@ -877,13 +996,19 @@ h1, h2, h3, h4 {
 }
 
 .contact-form {
-  background-color: var(--bg-card);
+  background: linear-gradient(175deg, #18181b 0%, #121215 100%);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
+  box-shadow: var(--skeu-bevel), var(--skeu-drop-card);
+}
+
+[data-theme="light"] .contact-form {
+  background: linear-gradient(175deg, #ffffff 0%, #f9f9fb 100%);
+  border-color: #e4e4e7;
 }
 
 .form-group {
@@ -901,20 +1026,22 @@ h1, h2, h3, h4 {
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 0.7rem 0.85rem;
+  padding: 0.75rem 0.9rem;
   background-color: var(--bg-subtle);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   color: var(--text);
   font-family: var(--font-sans);
   font-size: 0.9rem;
-  transition: border-color var(--transition);
+  box-shadow: var(--skeu-inset-groove);
+  transition: all var(--transition);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--border-focus);
+  border-color: var(--highlight);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(56, 189, 248, 0.2);
 }
 
 .form-feedback {
