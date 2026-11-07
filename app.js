@@ -4,7 +4,6 @@
 const themeToggle = document.getElementById('themeToggle');
 const htmlElement = document.documentElement;
 
-// Initialize Theme
 const savedTheme = localStorage.getItem('theme') || 'dark';
 htmlElement.setAttribute('data-theme', savedTheme);
 
@@ -12,7 +11,6 @@ if (themeToggle) {
   themeToggle.addEventListener('click', () => {
     const currentTheme = htmlElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
     htmlElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
   });
@@ -32,7 +30,6 @@ if (hamburgerBtn && navMenu) {
     navMenu.classList.toggle('active');
   });
 
-  // Close mobile menu on clicking any link
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       navMenu.classList.remove('active');
@@ -40,7 +37,6 @@ if (hamburgerBtn && navMenu) {
     });
   });
 
-  // Close when clicking outside
   document.addEventListener('click', (e) => {
     if (!navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
       navMenu.classList.remove('active');
@@ -76,58 +72,7 @@ function highlightActiveNav() {
 window.addEventListener('scroll', highlightActiveNav);
 
 // ==========================================================================
-// Interactive Resume Tabs Switcher
-// ==========================================================================
-const resumeTabs = document.querySelectorAll('.resume-tab');
-const timelinePanes = document.querySelectorAll('.timeline-pane');
-
-resumeTabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    const targetId = `pane-${tab.getAttribute('data-target')}`;
-
-    // Update active tab button
-    resumeTabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-
-    // Switch active timeline pane
-    timelinePanes.forEach(pane => {
-      if (pane.id === targetId) {
-        pane.classList.add('active');
-      } else {
-        pane.classList.remove('active');
-      }
-    });
-  });
-});
-
-// ==========================================================================
-// Project Filter Tabs
-// ==========================================================================
-const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const filter = button.getAttribute('data-filter');
-
-    // Update active filter button
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-
-    // Filter project cards
-    projectCards.forEach(card => {
-      const category = card.getAttribute('data-category');
-      if (filter === 'all' || category === filter) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  });
-});
-
-// ==========================================================================
-// Interactive Contact Form Handling
+// Contact Form Feedback
 // ==========================================================================
 const contactForm = document.getElementById('contactForm');
 const formFeedback = document.getElementById('formFeedback');
@@ -136,9 +81,8 @@ if (contactForm && formFeedback) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
 
-    formFeedback.textContent = `Thank you, ${name}! Your message has been prepared. You can also reach out directly to sksameera321s@gmail.com.`;
+    formFeedback.textContent = `Thanks, ${name}. Message received! You can also email sksameera321s@gmail.com directly.`;
     formFeedback.className = 'form-feedback success';
 
     contactForm.reset();
