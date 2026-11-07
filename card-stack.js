@@ -1,12 +1,11 @@
 /**
- * CardStack — Interactive 3D Throw Deck
+ * CardStack — Interactive 3D Throw Deck (Flutter-Free & Buttery Smooth)
  * Pure Vanilla JavaScript implementation of Kokonut UI's CardStack component.
- * Features:
- * - 3D stacked card deck with perspective layering
- * - Mouse drag & mobile touch swipe with realistic throw physics
- * - Smooth flick / throw off deck animation, cycling to back of stack
- * - Keyboard navigation (ArrowLeft / ArrowRight)
- * - Navigation buttons and progress dot indicators
+ * Fixes:
+ * - Eliminates animation flutter/jitter by managing discrete z-index layers
+ * - Smooth simultaneous forward/backward glide without flash
+ * - Animation lock (isAnimating) to prevent rapid-click collision
+ * - Fluid drag & touch release physics
  */
 
 class CardStack {
@@ -19,12 +18,13 @@ class CardStack {
     if (this.total === 0) return;
 
     this.currentIndex = 0;
+    this.isAnimating = false;
     this.isDragging = false;
     this.startX = 0;
     this.startY = 0;
     this.currentX = 0;
     this.currentY = 0;
-    this.throwThreshold = 90; // Pixels required to trigger a throw
+    this.throwThreshold = 80;
 
     this.prevBtn = document.getElementById('stackPrevBtn');
     this.nextBtn = document.getElementById('stackNextBtn');
@@ -36,7 +36,7 @@ class CardStack {
 
   init() {
     this.renderDots();
-    this.updateCardPositions(false);
+    this.applyDeckLayout(false);
     this.bindEvents();
   }
 
@@ -47,50 +47,67 @@ class CardStack {
       const dot = document.createElement('button');
       dot.className = `stack-dot ${i === this.currentIndex ? 'active' : ''}`;
       dot.setAttribute('aria-label', `Go to project card ${i + 1}`);
-      dot.addEventListener('click', () => this.goToCard(i));
+      dot.addEventListener('click', () => {
+        if (!this.isAnimating && i !== this.currentIndex) {
+          const dir = i > this.currentIndex ? 'right' : 'left';
+          this.nextCard(dir, i);
+        }
+      });
       this.dotsContainer.appendChild(dot);
     }
   }
 
-  updateCardPositions(animate = true) {
+  /**
+   * Defines exact resting transform and styles for each slot in the 3D deck.
+   */
+  getSlotStyle(slotIndex) {
+    switch (slotIndex) {
+      case 0:
+        return {
+          transform: 'translate3d(0, 0, 0) scale(1) rotate(0deg)',
+          opacity: '1',
+          zIndex: 30,
+          pointerEvents: 'auto'
+        };
+      case 1:
+        return {
+          transform: 'translate3d(0, 16px, -40px) scale(0.95) rotate(1.5deg)',
+          opacity: '0.85',
+          zIndex: 20,
+          pointerEvents: 'none'
+        };
+      case 2:
+      default:
+        return {
+          transform: 'translate3d(0, 32px, -80px) scale(0.90) rotate(-1.5deg)',
+          opacity: '0.65',
+          zIndex: 10,
+          pointerEvents: 'none'
+        };
+    }
+  }
+
+  applyDeckLayout(animate = true) {
     this.cards.forEach((card, i) => {
-      // Calculate offset relative to currentIndex (with cyclic wrap)
-      const offset = (i - this.currentIndex + this.total) % this.total;
+      const slot = (i - this.currentIndex + this.total) % this.total;
+      const style = this.getSlotStyle(slot);
 
-      card.style.transition = animate ? 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, box-shadow 0.4s ease' : 'none';
+      card.style.transition = animate 
+        ? 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease' 
+        : 'none';
 
-      if (offset === 0) {
-        // Top Active Card
-        card.style.transform = 'translate3d(0, 0, 0) scale(1) rotate(0deg)';
-        card.style.opacity = '1';
-        card.style.zIndex = '30';
-        card.style.pointerEvents = 'auto';
-        card.classList.add('is-active');
-      } else if (offset === 1) {
-        // Second Card in Deck
-        card.style.transform = 'translate3d(0, 16px, -40px) scale(0.95) rotate(1deg)';
-        card.style.opacity = '0.85';
-        card.style.zIndex = '20';
-        card.style.pointerEvents = 'none';
-        card.classList.remove('is-active');
-      } else if (offset === 2) {
-        // Third Card in Deck
-        card.style.transform = 'translate3d(0, 32px, -80px) scale(0.90) rotate(-1deg)';
-        card.style.opacity = '0.65';
-        card.style.zIndex = '10';
-        card.style.pointerEvents = 'none';
-        card.classList.remove('is-active');
-      } else {
-        // Hidden deep in deck
-        card.style.transform = 'translate3d(0, 48px, -120px) scale(0.85)';
-        card.style.opacity = '0';
-        card.style.zIndex = '5';
-        card.style.pointerEvents = 'none';
-        card.classList.remove('is-active');
-      }
+      card.style.transform = style.transform;
+      card.style.opacity = style.opacity;
+      card.style.zIndex = style.zIndex;
+      card.style.pointerEvents = style.pointerEvents;
+
+      card.classList.toggle('is-active', slot === 0);
     });
 
-    // Update Dots & Counter
+    this.updateControls();
+  }
+
+  updateControls() {
     if (this.dotsContainer) {
       const dots = this.dotsContainer.querySelectorAll('.stack-dot');
       dots.forEach((dot, idx) => {
@@ -103,70 +120,142 @@ class CardStack {
     }
   }
 
-  throwCard(direction = 'right') {
-    const activeCard = this.cards[this.currentIndex];
-    if (!activeCard) return;
+  /**
+   * Throw top card off screen and smoothly elevate the deck underneath
+   */
+  nextCard(direction = 'right', targetIndex = null) {
+    if (this.isAnimating) return;
+    this.isAnimating = true;
 
-    // Fly off screen animation
-    const flyX = direction === 'right' ? window.innerWidth * 0.7 : -window.innerWidth * 0.7;
-    const rotate = direction === 'right' ? 24 : -24;
+    const currentCard = this.cards[this.currentIndex];
+    const nextIndex = targetIndex !== null 
+      ? targetIndex 
+      : (this.currentIndex + 1) % this.total;
 
-    activeCard.style.transition = 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease';
-    activeCard.style.transform = `translate3d(${flyX}px, 40px, 0) rotate(${rotate}deg)`;
-    activeCard.style.opacity = '0';
+    // 1. Animate current card smoothly off screen
+    const flyX = direction === 'right' ? 380 : -380;
+    const flyRotate = direction === 'right' ? 14 : -14;
+
+    currentCard.style.transition = 'transform 0.36s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.32s ease';
+    currentCard.style.transform = `translate3d(${flyX}px, 20px, 0) rotate(${flyRotate}deg)`;
+    currentCard.style.opacity = '0';
+    currentCard.style.pointerEvents = 'none';
+
+    // 2. Simultaneously animate cards in deck advancing forward
+    this.cards.forEach((card, i) => {
+      if (i === this.currentIndex) return;
+      const newSlot = (i - nextIndex + this.total) % this.total;
+      const style = this.getSlotStyle(newSlot);
+
+      card.style.transition = 'transform 0.36s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.36s ease';
+      card.style.transform = style.transform;
+      card.style.opacity = style.opacity;
+      card.style.zIndex = style.zIndex;
+      card.style.pointerEvents = style.pointerEvents;
+      card.classList.toggle('is-active', newSlot === 0);
+    });
+
+    // 3. When thrown card is fully offscreen, silently move it to bottom of deck without flying back
+    setTimeout(() => {
+      const bottomSlot = (this.currentIndex - nextIndex + this.total) % this.total;
+      const bottomStyle = this.getSlotStyle(bottomSlot);
+
+      currentCard.style.transition = 'none';
+      currentCard.style.transform = bottomStyle.transform;
+      currentCard.style.zIndex = bottomStyle.zIndex;
+      currentCard.style.pointerEvents = bottomStyle.pointerEvents;
+      currentCard.classList.remove('is-active');
+
+      // Force style flush
+      void currentCard.offsetWidth;
+
+      // Gentle fade into bottom slot
+      currentCard.style.transition = 'opacity 0.25s ease';
+      currentCard.style.opacity = bottomStyle.opacity;
+
+      this.currentIndex = nextIndex;
+      this.updateControls();
+      this.isAnimating = false;
+    }, 360);
+  }
+
+  /**
+   * Bring previous card from outside directly onto top of deck
+   */
+  prevCard() {
+    if (this.isAnimating) return;
+    this.isAnimating = true;
+
+    const prevIndex = (this.currentIndex - 1 + this.total) % this.total;
+    const prevCard = this.cards[prevIndex];
+
+    // 1. Prepare previous card off-screen to the left (instantly without transition)
+    prevCard.style.transition = 'none';
+    prevCard.style.transform = 'translate3d(-340px, 15px, 0) rotate(-12deg)';
+    prevCard.style.opacity = '0';
+    prevCard.style.zIndex = 35; // Above all cards during entry
+
+    void prevCard.offsetWidth; // Force reflow
+
+    // 2. Slide prevCard in to Top Slot
+    prevCard.style.transition = 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.32s ease';
+    prevCard.style.transform = 'translate3d(0, 0, 0) scale(1) rotate(0deg)';
+    prevCard.style.opacity = '1';
+    prevCard.style.pointerEvents = 'auto';
+    prevCard.classList.add('is-active');
+
+    // 3. Simultaneously push existing cards back one slot
+    this.cards.forEach((card, i) => {
+      if (i === prevIndex) return;
+      const newSlot = (i - prevIndex + this.total) % this.total;
+      const style = this.getSlotStyle(newSlot);
+
+      card.style.transition = 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.38s ease';
+      card.style.transform = style.transform;
+      card.style.opacity = style.opacity;
+      card.style.zIndex = style.zIndex;
+      card.style.pointerEvents = style.pointerEvents;
+      card.classList.remove('is-active');
+    });
 
     setTimeout(() => {
-      this.currentIndex = (this.currentIndex + 1) % this.total;
-      this.updateCardPositions(true);
-    }, 280);
-  }
-
-  prevCard() {
-    this.currentIndex = (this.currentIndex - 1 + this.total) % this.total;
-    const newActiveCard = this.cards[this.currentIndex];
-
-    // Slide in from side
-    newActiveCard.style.transition = 'none';
-    newActiveCard.style.transform = 'translate3d(-200px, 0, 0) scale(0.95) rotate(-10deg)';
-    newActiveCard.style.opacity = '0';
-
-    requestAnimationFrame(() => {
-      this.updateCardPositions(true);
-    });
-  }
-
-  goToCard(index) {
-    if (index === this.currentIndex) return;
-    this.currentIndex = index;
-    this.updateCardPositions(true);
+      this.currentIndex = prevIndex;
+      this.updateControls();
+      this.isAnimating = false;
+    }, 380);
   }
 
   bindEvents() {
     if (this.nextBtn) {
-      this.nextBtn.addEventListener('click', () => this.throwCard('right'));
+      this.nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.nextCard('right');
+      });
     }
 
     if (this.prevBtn) {
-      this.prevBtn.addEventListener('click', () => this.prevCard());
+      this.prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.prevCard();
+      });
     }
 
-    // Keyboard Navigation
+    // Keyboard navigation when section in view
     document.addEventListener('keydown', (e) => {
       const rect = this.container.getBoundingClientRect();
-      // Only react if projects section is roughly in viewport
       if (rect.top < window.innerHeight && rect.bottom > 0) {
         if (e.key === 'ArrowRight') {
-          this.throwCard('right');
+          this.nextCard('right');
         } else if (e.key === 'ArrowLeft') {
           this.prevCard();
         }
       }
     });
 
-    // Drag / Touch Interactions on Cards
+    // Touch & Drag Handling on the Active Card
     this.cards.forEach((card) => {
       const startDrag = (clientX, clientY) => {
-        if (!card.classList.contains('is-active')) return;
+        if (this.isAnimating || !card.classList.contains('is-active')) return;
         this.isDragging = true;
         this.startX = clientX;
         this.startY = clientY;
@@ -180,8 +269,8 @@ class CardStack {
         this.currentX = clientX - this.startX;
         this.currentY = clientY - this.startY;
 
-        const rotation = (this.currentX / 15);
-        card.style.transform = `translate3d(${this.currentX}px, ${this.currentY * 0.4}px, 0) rotate(${rotation}deg)`;
+        const rotation = (this.currentX / 18);
+        card.style.transform = `translate3d(${this.currentX}px, ${this.currentY * 0.3}px, 0) rotate(${rotation}deg)`;
       };
 
       const endDrag = () => {
@@ -189,18 +278,16 @@ class CardStack {
         this.isDragging = false;
 
         if (Math.abs(this.currentX) > this.throwThreshold) {
-          const direction = this.currentX > 0 ? 'right' : 'left';
-          this.throwCard(direction);
+          const dir = this.currentX > 0 ? 'right' : 'left';
+          this.nextCard(dir);
         } else {
-          // Snap back
-          card.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+          // Smooth snap back
+          card.style.transition = 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)';
           card.style.transform = 'translate3d(0, 0, 0) scale(1) rotate(0deg)';
         }
       };
 
-      // Mouse listeners
       card.addEventListener('mousedown', (e) => {
-        // Ignore if clicking directly on a button or link
         if (e.target.closest('a') || e.target.closest('button')) return;
         startDrag(e.clientX, e.clientY);
       });
@@ -213,7 +300,6 @@ class CardStack {
         endDrag();
       });
 
-      // Touch listeners for mobile
       card.addEventListener('touchstart', (e) => {
         if (e.target.closest('a') || e.target.closest('button')) return;
         if (e.touches.length > 0) {
