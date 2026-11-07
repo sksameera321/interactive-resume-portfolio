@@ -490,53 +490,68 @@
         </div>
 
         <div class="contact-wrapper">
-          <div class="contact-left">
+          <div class="contact-header-block">
             <p class="contact-lead">
-              I am open to frontend and software development opportunities, freelance work, and technical collaborations. Feel free to reach out directly.
+              I am open to software development opportunities, frontend engineering roles, freelance projects, and technical collaborations. Reach out directly through any of the channels below.
             </p>
-
-            <ul class="contact-details">
-              <li>
-                <span class="c-label">LinkedIn</span>
-                <a href="http://linkedin.com/in/shaik-sameera-bhanu-86b67341a/" target="_blank" rel="noopener noreferrer" class="c-val">shaik-sameera-bhanu</a>
-              </li>
-              <li>
-                <span class="c-label">Email</span>
-                <a href="mailto:sksameera321s@gmail.com" class="c-val">sksameera321s@gmail.com</a>
-              </li>
-              <li>
-                <span class="c-label">GitHub</span>
-                <a href="https://github.com/sksameera321" target="_blank" rel="noopener noreferrer" class="c-val">github.com/sksameera321</a>
-              </li>
-              <li>
-                <span class="c-label">Location</span>
-                <span class="c-val">India (Open to Remote Globally)</span>
-              </li>
-            </ul>
+            <div class="contact-quick-actions">
+              <a href="mailto:sksameera321s@gmail.com" class="btn btn-primary">
+                <i class="fa-solid fa-paper-plane"></i> Send Direct Email
+              </a>
+              <a href="resume.html" target="_blank" class="btn btn-secondary">
+                <i class="fa-solid fa-file-lines"></i> View ATS Resume
+              </a>
+            </div>
           </div>
 
-          <form class="contact-form" id="contactForm">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required placeholder="Your name">
-            </div>
+          <div class="neu-contact-grid">
+            <!-- LinkedIn -->
+            <a href="http://linkedin.com/in/shaik-sameera-bhanu-86b67341a/" target="_blank" rel="noopener noreferrer" class="neu-contact-card">
+              <div class="neu-contact-icon neu-icon-linkedin">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </div>
+              <div class="neu-contact-info">
+                <span class="neu-contact-label">LinkedIn</span>
+                <span class="neu-contact-val">shaik-sameera-bhanu</span>
+              </div>
+              <span class="neu-card-arrow">&rarr;</span>
+            </a>
 
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-            </div>
+            <!-- Email -->
+            <a href="mailto:sksameera321s@gmail.com" class="neu-contact-card">
+              <div class="neu-contact-icon neu-icon-email">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="neu-contact-info">
+                <span class="neu-contact-label">Email</span>
+                <span class="neu-contact-val">sksameera321s@gmail.com</span>
+              </div>
+              <span class="neu-card-arrow">&rarr;</span>
+            </a>
 
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" required placeholder="Write your message here..."></textarea>
-            </div>
+            <!-- GitHub -->
+            <a href="https://github.com/sksameera321" target="_blank" rel="noopener noreferrer" class="neu-contact-card">
+              <div class="neu-contact-icon neu-icon-github">
+                <i class="fa-brands fa-github"></i>
+              </div>
+              <div class="neu-contact-info">
+                <span class="neu-contact-label">GitHub</span>
+                <span class="neu-contact-val">github.com/sksameera321</span>
+              </div>
+              <span class="neu-card-arrow">&rarr;</span>
+            </a>
 
-            <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
-              Send Message
-            </button>
-            
-            <div class="form-feedback" id="formFeedback"></div>
-          </form>
+            <!-- Location -->
+            <div class="neu-contact-card neu-contact-static">
+              <div class="neu-contact-icon neu-icon-location">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="neu-contact-info">
+                <span class="neu-contact-label">Location</span>
+                <span class="neu-contact-val">India (Open to Remote Globally)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
