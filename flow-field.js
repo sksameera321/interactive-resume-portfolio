@@ -52,7 +52,7 @@ class FlowField {
     const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
     if (isDark) {
       return {
-        bgClear: 'rgba(9, 9, 11, 0.10)', // Lower alpha = longer, richer streamline trails
+        bgClear: 'rgba(19, 21, 25, 0.12)', // Matches Neumorphic dark surface #131519
         particleColors: [
           'rgba(56, 189, 248, 0.85)',  // Electric sky cyan
           'rgba(129, 140, 248, 0.80)', // Bright indigo
@@ -63,13 +63,13 @@ class FlowField {
       };
     } else {
       return {
-        bgClear: 'rgba(255, 255, 255, 0.12)', // Fade trail for light theme
+        bgClear: 'rgba(230, 236, 244, 0.14)', // Matches Neumorphic light surface #e6ecf4
         particleColors: [
-          'rgba(2, 132, 199, 0.80)',   // Deep cobalt blue
-          'rgba(67, 56, 202, 0.75)',   // Deep indigo
-          'rgba(15, 23, 42, 0.70)',    // Slate ink
-          'rgba(14, 165, 233, 0.85)',  // Cyan highlight
-          'rgba(79, 70, 229, 0.75)'    // Vivid purple
+          'rgba(2, 132, 199, 0.85)',   // Deep cobalt blue
+          'rgba(67, 56, 202, 0.80)',   // Deep indigo
+          'rgba(30, 41, 59, 0.75)',    // Slate ink
+          'rgba(14, 165, 233, 0.90)',  // Cyan highlight
+          'rgba(79, 70, 229, 0.80)'    // Vivid purple
         ]
       };
     }
