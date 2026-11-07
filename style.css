@@ -325,7 +325,8 @@ h1, h2, h3, h4 {
   position: relative;
   overflow: hidden;
   padding-top: 8rem;
-  padding-bottom: 5rem;
+  padding-bottom: 5.5rem;
+  min-height: 560px;
 }
 
 .flow-field-canvas {
@@ -336,7 +337,7 @@ h1, h2, h3, h4 {
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .hero-container {
@@ -377,12 +378,33 @@ h1, h2, h3, h4 {
   flex-wrap: wrap;
 }
 
-/* Focus Card */
+.hero-cta-group .btn-secondary,
+.hero-cta-group .btn-icon {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(24, 24, 27, 0.65);
+}
+
+[data-theme="light"] .hero-cta-group .btn-secondary,
+[data-theme="light"] .hero-cta-group .btn-icon {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* Focus Card - Frosted Glass immersed in the Wind field */
 .focus-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border);
+  background-color: rgba(24, 24, 27, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
   padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .focus-card {
+  background-color: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .focus-header {
