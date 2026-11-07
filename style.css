@@ -1146,3 +1146,10 @@ h1, h2, h3, h4 {
     text-align: center;
   }
 }
+
+/* Kokonut UI Circular Reveal View Transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
