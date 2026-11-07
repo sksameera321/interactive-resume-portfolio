@@ -34,9 +34,14 @@
       </nav>
 
       <div class="nav-actions">
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
-          <i class="fa-solid fa-moon moon-icon"></i>
-          <i class="fa-solid fa-sun sun-icon"></i>
+        <!-- Kokonut UI Animated SwitchButton -->
+        <button id="themeToggle" class="kokonut-switch" aria-label="Toggle theme" title="Toggle theme">
+          <span class="switch-track">
+            <span class="switch-thumb">
+              <i class="fa-solid fa-moon moon-icon"></i>
+              <i class="fa-solid fa-sun sun-icon"></i>
+            </span>
+          </span>
         </button>
         <button id="hamburgerBtn" class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
           <span></span>
@@ -178,95 +183,130 @@
       </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Section - Kokonut UI CardStack -->
     <section class="section projects-section" id="projects">
       <div class="container">
         <div class="section-heading">
-          <span class="section-label">03 / Work</span>
-          <h2 class="section-title">Featured Projects</h2>
+          <div class="section-heading-row">
+            <div>
+              <span class="section-label">03 / Work</span>
+              <h2 class="section-title">Featured Projects</h2>
+            </div>
+            <div class="stack-controls">
+              <span class="stack-counter" id="stackCounter">1 / 3</span>
+              <div class="stack-arrows">
+                <button id="stackPrevBtn" class="stack-arrow-btn" aria-label="Previous Project Card" title="Previous Project">
+                  <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button id="stackNextBtn" class="stack-arrow-btn" aria-label="Next / Throw Project Card" title="Next Project / Throw Card">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <p class="stack-hint"><i class="fa-solid fa-hand-pointer"></i> Drag or swipe card to throw, or use arrow keys</p>
         </div>
 
-        <div class="projects-list">
-          
-          <!-- Project 1 -->
-          <article class="project-row">
-            <div class="project-main">
-              <div class="project-meta-line">
-                <span class="project-number">01</span>
-                <span class="project-type">Web Application</span>
+        <div class="card-stack-viewport" id="projectCardStack">
+          <!-- Card 1 -->
+          <article class="stack-card">
+            <div class="stack-card-inner">
+              <div class="stack-card-top">
+                <div class="stack-card-badge">
+                  <span class="stack-card-num">01</span>
+                  <span class="stack-card-type">Web Application</span>
+                </div>
+                <div class="stack-card-status">Featured</div>
               </div>
-              <h3 class="project-heading">Project Orbit</h3>
-              <p class="project-summary">
+
+              <h3 class="stack-card-title">Project Orbit</h3>
+              <p class="stack-card-desc">
                 A collaborative task management application facilitating real-time board updates and task tracking. Implements client-side state handling and asynchronous REST API communication.
               </p>
-              <div class="project-stack">
-                <span>JavaScript</span>
+
+              <div class="stack-card-tags">
+                <span>JavaScript (ES6+)</span>
                 <span>CSS Grid</span>
                 <span>HTML5</span>
                 <span>REST API</span>
+                <span>Git</span>
               </div>
-            </div>
-            <div class="project-actions">
-              <a href="https://github.com/sksameera321/project-orbit" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-                <i class="fa-brands fa-github"></i> Source Code
-              </a>
+
+              <div class="stack-card-footer">
+                <a href="https://github.com/sksameera321/project-orbit" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <i class="fa-brands fa-github"></i> View Repository
+                </a>
+              </div>
             </div>
           </article>
 
-          <!-- Project 2 -->
-          <article class="project-row">
-            <div class="project-main">
-              <div class="project-meta-line">
-                <span class="project-number">02</span>
-                <span class="project-type">E-Commerce Frontend</span>
+          <!-- Card 2 -->
+          <article class="stack-card">
+            <div class="stack-card-inner">
+              <div class="stack-card-top">
+                <div class="stack-card-badge">
+                  <span class="stack-card-num">02</span>
+                  <span class="stack-card-type">E-Commerce Frontend</span>
+                </div>
+                <div class="stack-card-status">Featured</div>
               </div>
-              <h3 class="project-heading">Amazon Storefront Clone</h3>
-              <p class="project-summary">
+
+              <h3 class="stack-card-title">Amazon Storefront Clone</h3>
+              <p class="stack-card-desc">
                 A multi-page responsive storefront featuring product listing, category search filtering, and shopping cart persistence using browser LocalStorage.
               </p>
-              <div class="project-stack">
+
+              <div class="stack-card-tags">
                 <span>HTML5</span>
                 <span>CSS3 Flexbox</span>
-                <span>JavaScript (ES6+)</span>
+                <span>JavaScript</span>
                 <span>LocalStorage</span>
               </div>
-            </div>
-            <div class="project-actions">
-              <a href="https://github.com/sksameera321/my-amazon-project" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-                <i class="fa-brands fa-github"></i> Source Code
-              </a>
+
+              <div class="stack-card-footer">
+                <a href="https://github.com/sksameera321/my-amazon-project" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <i class="fa-brands fa-github"></i> View Repository
+                </a>
+              </div>
             </div>
           </article>
 
-          <!-- Project 3 -->
-          <article class="project-row">
-            <div class="project-main">
-              <div class="project-meta-line">
-                <span class="project-number">03</span>
-                <span class="project-type">Portfolio & Resume</span>
+          <!-- Card 3 -->
+          <article class="stack-card">
+            <div class="stack-card-inner">
+              <div class="stack-card-top">
+                <div class="stack-card-badge">
+                  <span class="stack-card-num">03</span>
+                  <span class="stack-card-type">Portfolio & Resume</span>
+                </div>
+                <div class="stack-card-status">Latest</div>
               </div>
-              <h3 class="project-heading">Developer Portfolio & ATS Resume</h3>
-              <p class="project-summary">
+
+              <h3 class="stack-card-title">Developer Portfolio & ATS Resume</h3>
+              <p class="stack-card-desc">
                 A lightweight, zero-dependency developer portfolio and semantic ATS-compliant printable resume with dark/light mode persistence and clean typography.
               </p>
-              <div class="project-stack">
+
+              <div class="stack-card-tags">
                 <span>Semantic HTML</span>
-                <span>CSS Tokens</span>
+                <span>CSS Custom Properties</span>
                 <span>Vanilla JS</span>
                 <span>GitHub Pages</span>
               </div>
-            </div>
-            <div class="project-actions">
-              <a href="resume.html" target="_blank" class="btn btn-outline btn-sm">
-                <i class="fa-solid fa-file-lines"></i> View Resume
-              </a>
-              <a href="https://github.com/sksameera321/interactive-resume-portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-                <i class="fa-brands fa-github"></i> Source Code
-              </a>
+
+              <div class="stack-card-footer">
+                <a href="resume.html" target="_blank" class="btn btn-primary btn-sm">
+                  <i class="fa-solid fa-file-lines"></i> Open ATS Resume
+                </a>
+                <a href="https://github.com/sksameera321/interactive-resume-portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <i class="fa-brands fa-github"></i> View Repository
+                </a>
+              </div>
             </div>
           </article>
-
         </div>
+
+        <div class="stack-dots-wrapper" id="stackDots"></div>
       </div>
     </section>
 
@@ -398,6 +438,7 @@
   </footer>
 
   <script src="flow-field.js"></script>
+  <script src="card-stack.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
