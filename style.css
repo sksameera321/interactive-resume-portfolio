@@ -1016,14 +1016,17 @@ h1, h2, h3, h4 {
   color: var(--text);
 }
 
-.neu-faq-link {
+.neu-faq-link,
+.neu-inline-link {
   color: var(--highlight);
   text-decoration: underline;
   text-underline-offset: 3px;
   font-weight: 500;
+  transition: color var(--transition);
 }
 
-.neu-faq-link:hover {
+.neu-faq-link:hover,
+.neu-inline-link:hover {
   color: var(--text);
 }
 
