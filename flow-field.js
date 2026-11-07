@@ -179,7 +179,7 @@ class FlowField {
       });
       // Clear canvas with new theme background
       const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-      this.ctx.fillStyle = isDark ? '#09090b' : '#ffffff';
+      this.ctx.fillStyle = isDark ? '#131519' : '#e6ecf4';
       this.ctx.fillRect(0, 0, this.width, this.height);
     });
 
