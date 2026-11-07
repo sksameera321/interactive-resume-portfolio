@@ -13,7 +13,7 @@ A modern, responsive, and interactive developer portfolio and resume showcase bu
 
 ## Author
 
-- **Name**: Sameera
+- **Name**: Sameera Bhanu
 - **GitHub**: [@sksameera321](https://github.com/sksameera321)
 - **Email**: sksameera321s@gmail.com
 
