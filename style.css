@@ -925,6 +925,97 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
+   FAQ Section (AEO & GEO - Neumorphic Accordion)
+   ========================================================================== */
+.section-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+  max-width: 620px;
+}
+
+.neu-faq-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-top: 1.5rem;
+}
+
+.neu-faq-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--neu-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--neu-flat);
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.neu-faq-card:hover {
+  box-shadow: var(--neu-float);
+  border-color: var(--border-focus);
+}
+
+.neu-faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.6rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: color var(--transition);
+}
+
+.neu-faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.neu-faq-question:hover {
+  color: var(--highlight);
+}
+
+.neu-faq-chevron {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color var(--transition);
+  flex-shrink: 0;
+}
+
+.neu-faq-card[open] .neu-faq-chevron {
+  transform: rotate(180deg);
+  color: var(--highlight);
+}
+
+.neu-faq-answer {
+  padding: 0 1.6rem 1.35rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  border-top: 1px solid var(--neu-border);
+  margin-top: 0.25rem;
+  padding-top: 1rem;
+}
+
+.neu-faq-answer strong {
+  color: var(--text);
+}
+
+.neu-faq-link {
+  color: var(--highlight);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+
+.neu-faq-link:hover {
+  color: var(--text);
+}
+
+/* ==========================================================================
    Contact Section (Neumorphic Direct Channels)
    ========================================================================== */
 .contact-wrapper {
