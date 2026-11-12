@@ -258,33 +258,81 @@ class CardStack {
       }
     });
 
-    // Touch & Drag Handling on the Active Card
+    // Touch & Drag Handling on the Active Card with gesture disambiguation (vertical scroll vs horizontal swipe)
     this.cards.forEach((card) => {
+      let isCardDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let touchIntent = null; // 'horizontal' | 'vertical' | null
+
       const startDrag = (clientX, clientY) => {
         if (this.isAnimating || !card.classList.contains('is-active')) return;
+        isCardDragging = true;
         this.isDragging = true;
-        this.startX = clientX;
-        this.startY = clientY;
-        this.currentX = 0;
-        this.currentY = 0;
+        startX = clientX;
+        startY = clientY;
+        currentX = 0;
+        currentY = 0;
+        touchIntent = null;
         card.style.transition = 'none';
       };
 
-      const moveDrag = (clientX, clientY) => {
-        if (!this.isDragging || !card.classList.contains('is-active')) return;
-        this.currentX = clientX - this.startX;
-        this.currentY = clientY - this.startY;
+      const moveDrag = (clientX, clientY, isTouchEvent = false) => {
+        if (!isCardDragging || !card.classList.contains('is-active')) return;
+        const diffX = clientX - startX;
+        const diffY = clientY - startY;
 
-        const rotation = (this.currentX / 18);
-        card.style.transform = `translate3d(${this.currentX}px, ${this.currentY * 0.3}px, 0) rotate(${rotation}deg)`;
+        if (isTouchEvent) {
+          // If gesture intent not resolved yet, determine whether it's page scroll or card swipe
+          if (!touchIntent) {
+            const absX = Math.abs(diffX);
+            const absY = Math.abs(diffY);
+            if (absY > 8 && absY >= absX) {
+              touchIntent = 'vertical';
+              // Abandon card drag so user can naturally scroll the page vertically without jitter
+              isCardDragging = false;
+              this.isDragging = false;
+              card.style.transition = 'transform 0.2s ease';
+              card.style.transform = 'translate3d(0, 0, 0) scale(1) rotate(0deg)';
+              return;
+            } else if (absX > 8 && absX > absY) {
+              touchIntent = 'horizontal';
+            } else {
+              return; // Wait for directional threshold
+            }
+          }
+
+          if (touchIntent === 'vertical') {
+            return;
+          }
+        }
+
+        currentX = diffX;
+        currentY = diffY;
+        this.currentX = currentX;
+
+        const rotation = (currentX / 18);
+        card.style.transform = `translate3d(${currentX}px, ${currentY * 0.25}px, 0) rotate(${rotation}deg)`;
       };
 
-      const endDrag = () => {
-        if (!this.isDragging || !card.classList.contains('is-active')) return;
+      const endDrag = (isTouchEvent = false) => {
+        if (!isCardDragging && !this.isDragging) return;
+        if (!card.classList.contains('is-active')) return;
+
+        isCardDragging = false;
         this.isDragging = false;
 
-        if (Math.abs(this.currentX) > this.throwThreshold) {
-          const dir = this.currentX > 0 ? 'right' : 'left';
+        if (isTouchEvent && touchIntent === 'vertical') {
+          touchIntent = null;
+          return;
+        }
+        touchIntent = null;
+
+        const effectiveThreshold = window.innerWidth < 480 ? 60 : this.throwThreshold;
+        if (Math.abs(currentX) > effectiveThreshold) {
+          const dir = currentX > 0 ? 'right' : 'left';
           this.nextCard(dir);
         } else {
           // Smooth snap back
@@ -299,11 +347,11 @@ class CardStack {
       });
 
       window.addEventListener('mousemove', (e) => {
-        moveDrag(e.clientX, e.clientY);
+        moveDrag(e.clientX, e.clientY, false);
       });
 
       window.addEventListener('mouseup', () => {
-        endDrag();
+        endDrag(false);
       });
 
       card.addEventListener('touchstart', (e) => {
@@ -315,12 +363,16 @@ class CardStack {
 
       window.addEventListener('touchmove', (e) => {
         if (e.touches.length > 0) {
-          moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+          moveDrag(e.touches[0].clientX, e.touches[0].clientY, true);
         }
       }, { passive: true });
 
       window.addEventListener('touchend', () => {
-        endDrag();
+        endDrag(true);
+      });
+
+      window.addEventListener('touchcancel', () => {
+        endDrag(true);
       });
     });
   }
