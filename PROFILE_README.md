@@ -2,7 +2,7 @@
 
 <!-- Animated Header Typing SVG (Clean Professional Typography) -->
 <a href="https://sksameera321.github.io/interactive-resume-portfolio/">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=700&size=28&duration=2500&pause=1000&color=38BDF8&center=true&vCenter=true&width=720&height=60&lines=Sameera+Bhanu;Frontend+Developer+%26+UI+Engineer;1st+Year+B.Tech+CSE+%40+SVECW+Bhimavaram;Tactile+Neumorphic+%26+Interactive+Web+Systems" alt="Sameera Bhanu Typing Header" />
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=700&size=28&duration=2500&pause=1000&color=38BDF8&center=true&vCenter=true&width=720&height=60&lines=Sameera+Bhanu;Frontend+Developer+%26+UI+Engineer;1st+Year+B.Tech+IT+%40+SVECW+Bhimavaram;Tactile+Neumorphic+%26+Interactive+Web+Systems" alt="Sameera Bhanu Typing Header" />
 </a>
 
 <p align="center">
@@ -19,7 +19,7 @@
 
 <!-- Metric Highlights -->
 <p align="center">
-  <img src="https://img.shields.io/badge/Academics-1st_Year_B.Tech_CSE_@_SVECW-0f172a?style=flat-square&logo=book&logoColor=38bdf8" alt="B.Tech" />
+  <img src="https://img.shields.io/badge/Academics-1st_Year_B.Tech_IT_@_SVECW-0f172a?style=flat-square&logo=book&logoColor=38bdf8" alt="B.Tech" />
   <img src="https://img.shields.io/badge/Intermediate-98%25_(982%2F1000)_VIT_Jr_College-0f172a?style=flat-square&logo=award&logoColor=38bdf8" alt="Intermediate" />
   <img src="https://img.shields.io/badge/Sprint-4_Months_Intensive_Frontend-0f172a?style=flat-square&logo=clock&logoColor=38bdf8" alt="Sprint" />
   <img src="https://img.shields.io/badge/Shipped-6%2B_Web_Applications-0f172a?style=flat-square&logo=git&logoColor=38bdf8" alt="Projects" />
@@ -33,7 +33,7 @@
 
 > *"Great frontend engineering is where clean architecture meets tactile craftsmanship."*
 
-- <img src="https://raw.githubusercontent.com/sksameera321/sksameera321/main/icons/graduation-cap.svg" width="16" height="16" valign="middle" /> **Undergraduate Education**: 1st-Year B.Tech student in Computer Science & Engineering at **[Shri Vishnu Engineering College for Women (SVECW)](https://www.linkedin.com/school/15124808/)**, Bhimavaram *(Expected Graduation: 2029–30)*.
+- <img src="https://raw.githubusercontent.com/sksameera321/sksameera321/main/icons/graduation-cap.svg" width="16" height="16" valign="middle" /> **Undergraduate Education**: 1st-Year B.Tech student in Information Technology at **[Shri Vishnu Engineering College for Women (SVECW)](https://www.linkedin.com/school/15124808/)**, Bhimavaram *(Expected Graduation: 2029–30)*.
 - <img src="https://raw.githubusercontent.com/sksameera321/sksameera321/main/icons/timer.svg" width="16" height="16" valign="middle" /> **Accelerated Trajectory**: Began focused frontend engineering in July 2026 authoring [`project-1`](https://github.com/sksameera321/project-1) after achieving **98% (982/1000)** in Intermediate at VIT Junior College and qualifying AP EAMCET. Over a 4-month development sprint, engineered and deployed 6+ full-featured web applications.
 - <img src="https://raw.githubusercontent.com/sksameera321/sksameera321/main/icons/layers.svg" width="16" height="16" valign="middle" /> **Tactile Design Systems**: Dedicated to physical UI paradigms &mdash; **Neumorphism (Soft UI)** dual-shadow systems, skeuomorphic physical controls, and **HTML5 Canvas FlowField** vector particles.
 - <img src="https://raw.githubusercontent.com/sksameera321/sksameera321/main/icons/cpu.svg" width="16" height="16" valign="middle" /> **Core Principles**: Semantic HTML5 accessibility (a11y), responsive mobile-first architecture, zero runtime bloat, and performant vanilla JavaScript.
@@ -149,11 +149,11 @@
 
 <br><br>
 
-  <img src="https://raw.githubusercontent.com/sksameera321/sksameera321/main/github-stats.svg" alt="GitHub Stats" />
+  <img src="./github-stats.svg" alt="GitHub Stats" />
   &nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/sksameera321/sksameera321/main/top-langs.svg" alt="Top Languages" />
+  <img src="./top-langs.svg" alt="Top Languages" />
   <br><br>
-  <img src="https://streak-stats.demolab.com?user=sksameera321&theme=tokyonight&background=131519&border=1e293b&stroke=1e293b&ring=38bdf8&fire=38bdf8&currStreakLabel=38bdf8" alt="GitHub Streak Stats" />
+  <img src="./streak-stats.svg" alt="GitHub Streak Stats" />
 </div>
 
 ---
