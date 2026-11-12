@@ -5,7 +5,7 @@
 ## Identity & Core Details
 - Full Name: Sameera Bhanu (Shaik Sameera Bhanu)
 - Role: Frontend Developer & Software Engineer
-- Education: B.Tech in Computer Science & Engineering (1st Year, Expected 2029–30) at Shri Vishnu Engineering College for Women (SVECW), Bhimavaram | Intermediate: 98% (982/1000) at VIT Junior College (AP EAMCET Qualified)
+- Education: B.Tech in Information Technology (1st Year, Expected 2029–30) at Shri Vishnu Engineering College for Women (SVECW), Bhimavaram | Intermediate: 98% (982/1000) at VIT Junior College (AP EAMCET Qualified)
 - Location: India (Open to Remote Opportunities Globally)
 - Email: sksameera321s@gmail.com
 - LinkedIn: http://linkedin.com/in/shaik-sameera-bhanu-86b67341a/
@@ -14,7 +14,7 @@
 - ATS Resume: https://sksameera321.github.io/interactive-resume-portfolio/resume.html
 
 ## Summary
-Sameera Bhanu is a fast-learning 1st-year B.Tech CSE student who embarked on frontend engineering four months ago (July 2026). In four months of intensive development, she has engineered 6+ practical web applications from scratch using semantic HTML5, CSS3, modern JavaScript, and React. She creates custom design systems including Neumorphic (Soft UI) interfaces, interactive canvas visualizations (FlowField particle wind), and 3D card physics (CardStack).
+Sameera Bhanu is a fast-learning 1st-year B.Tech IT student who embarked on frontend engineering four months ago (July 2026). In four months of intensive development, she has engineered 6+ practical web applications from scratch using semantic HTML5, CSS3, modern JavaScript, and React. She creates custom design systems including Neumorphic (Soft UI) interfaces, interactive canvas visualizations (FlowField particle wind), and 3D card physics (CardStack).
 
 ## Core Technical Skills
 - Frontend Core: HTML5 (Semantic Structure, Accessibility, ARIA), CSS3 (Flexbox, CSS Grid, Custom Properties, Keyframe Animations), JavaScript (ES6+, Async/Await, DOM APIs, Event Delegation)
