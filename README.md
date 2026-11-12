@@ -62,7 +62,7 @@
 
 ## Education & Development Journey
 
-- **B.Tech in Computer Science & Engineering**: [Shri Vishnu Engineering College for Women (SVECW)](https://www.linkedin.com/school/15124808/), Bhimavaram &mdash; *1st Year (Expected Graduation: 2029–30)*
+- **B.Tech in Information Technology**: [Shri Vishnu Engineering College for Women (SVECW)](https://www.linkedin.com/school/15124808/), Bhimavaram &mdash; *1st Year (Expected Graduation: 2029–30)*
 - **Intermediate (MPC)**: VIT Junior College &mdash; *98% (982/1000), AP EAMCET Qualified*
 - **4-Month Intensive Sprint**: Started frontend development four months ago (July 2026) building [`project-1`](https://github.com/sksameera321/project-1), rapidly expanding into 6+ complete web applications exploring responsive architecture, Neumorphism, and canvas graphics.
 
