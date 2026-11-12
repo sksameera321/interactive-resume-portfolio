@@ -99,6 +99,7 @@ html.preload *::after {
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -109,6 +110,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color var(--transition), color var(--transition);
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .container {
@@ -412,21 +415,48 @@ h1, h2, h3, h4 {
   display: none;
   flex-direction: column;
   justify-content: center;
-  gap: 4px;
-  width: 36px;
-  height: 36px;
-  background: transparent;
-  border: 1px solid var(--border);
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--neu-border);
+  box-shadow: var(--neu-subtle);
   border-radius: var(--radius-sm);
   cursor: pointer;
-  padding: 6px;
+  padding: 8px;
+  transition: all var(--transition);
+  outline: none;
+}
+
+.hamburger-btn:hover {
+  box-shadow: var(--neu-float);
+}
+
+.hamburger-btn:active {
+  box-shadow: var(--neu-pressed);
 }
 
 .hamburger-btn span {
   display: block;
-  width: 100%;
+  width: 20px;
   height: 2px;
   background-color: var(--text);
+  border-radius: 2px;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, background-color var(--transition);
+}
+
+.hamburger-btn[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-btn[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger-btn[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ==========================================================================
@@ -1198,22 +1228,19 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   Responsive
+   Responsive Design System (Tablets, Mobiles, and Narrow Handsets)
    ========================================================================== */
+
+/* Tablet & Smaller Laptops (<= 860px) */
 @media (max-width: 860px) {
   .hero-container {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 
-  .project-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .timeline-entry {
     grid-template-columns: 1fr;
-    gap: 0.75rem;
+    gap: 0.85rem;
   }
 
   .timeline-left {
@@ -1224,31 +1251,45 @@ h1, h2, h3, h4 {
 
   .contact-wrapper {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.25rem;
   }
 
   .resume-cta-banner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .resume-cta-banner .btn {
+    align-self: flex-start;
   }
 }
 
-@media (max-width: 680px) {
+/* Tablets & Large Phones (<= 768px) */
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: flex;
+  }
+
   .nav-links {
     position: fixed;
     top: 64px;
     left: 0;
     width: 100%;
     background-color: var(--bg);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--neu-border);
+    box-shadow: 0 16px 36px var(--neu-shadow-dark);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     flex-direction: column;
-    align-items: flex-start;
-    padding: 1.5rem;
-    gap: 1.2rem;
+    align-items: stretch;
+    padding: 1.25rem 1.25rem 1.75rem;
+    gap: 0.45rem;
     transform: translateY(-120%);
     opacity: 0;
     pointer-events: none;
-    transition: all var(--transition);
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    z-index: 999;
   }
 
   .nav-links.active {
@@ -1257,18 +1298,343 @@ h1, h2, h3, h4 {
     pointer-events: auto;
   }
 
-  .hamburger-btn {
+  .nav-link {
     display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.98rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    transition: all var(--transition);
+    min-height: 44px;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: var(--bg-card);
+    box-shadow: var(--neu-subtle);
+    color: var(--highlight);
+  }
+
+  .nav-resume-link {
+    justify-content: space-between;
+    margin-top: 0.35rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--neu-border);
+    box-shadow: var(--neu-subtle);
+    color: var(--highlight);
+    font-weight: 600;
+  }
+
+  .hero-section {
+    padding-top: 6rem;
+    padding-bottom: 3.5rem;
+    min-height: auto;
   }
 
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 2.25rem;
+  }
+
+  .section {
+    padding: 3.75rem 0;
+  }
+
+  .section-heading {
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  /* CardStack Viewport scaling for tablets/phones */
+  .card-stack-viewport {
+    height: 440px;
+    margin: 2rem auto 1.5rem;
+  }
+
+  .stack-card-inner {
+    padding: 1.6rem 1.75rem;
+  }
+
+  .stack-card-title {
+    font-size: 1.3rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* Medium Phones (<= 600px) */
+@media (max-width: 600px) {
+  .section-heading-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+
+  .stack-controls {
+    width: 100%;
+    justify-content: space-between;
   }
 
   .footer-container {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.85rem;
     text-align: center;
+  }
+}
+
+/* Small Phones (<= 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1.1rem;
+  }
+
+  .brand-logo {
+    font-size: 1.05rem;
+  }
+
+  .hero-section {
+    padding-top: 5.25rem;
+    padding-bottom: 2.75rem;
+  }
+
+  .hero-role {
+    font-size: 0.78rem;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+    letter-spacing: -0.025em;
+    margin: 0.4rem 0 0.9rem;
+  }
+
+  .hero-bio {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .hero-cta-group .btn-primary,
+  .hero-cta-group .btn-secondary {
+    flex: 1 1 100%;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.88rem;
+  }
+
+  .hero-cta-group .btn-icon {
+    flex: 1 1 calc(33.333% - 0.5rem);
+    height: 44px;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .focus-card {
+    padding: 1.25rem 1.15rem;
+  }
+
+  .focus-val {
+    font-size: 0.85rem;
+    word-break: break-word;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.88rem;
+  }
+
+  .about-content {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    gap: 1rem;
+  }
+
+  .skill-category {
+    padding: 1.25rem 1.1rem;
+  }
+
+  .tag-list li {
+    font-size: 0.78rem;
+    padding: 0.28rem 0.6rem;
+  }
+
+  /* Kokonut CardStack phone height & content flow */
+  .card-stack-viewport {
+    height: 470px;
+    margin: 1.5rem auto 1.25rem;
+  }
+
+  .stack-card-inner {
+    padding: 1.25rem 1.15rem;
+  }
+
+  .stack-card-top {
+    margin-bottom: 0.65rem;
+  }
+
+  .stack-card-title {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .stack-card-desc {
+    font-size: 0.86rem;
+    line-height: 1.48;
+    margin-bottom: 0.75rem;
+  }
+
+  .stack-card-tags {
+    margin-bottom: 0.75rem;
+    gap: 0.35rem;
+  }
+
+  .stack-card-tags span {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .stack-card-footer {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+  }
+
+  .stack-card-footer .btn {
+    flex: 1 1 auto;
+    min-width: 120px;
+    font-size: 0.82rem;
+    padding: 0.55rem 0.85rem;
+    justify-content: center;
+  }
+
+  .timeline-entry {
+    padding: 1.15rem 1rem;
+  }
+
+  .timeline-heading {
+    font-size: 1rem;
+  }
+
+  .timeline-sub {
+    font-size: 0.82rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-text {
+    font-size: 0.86rem;
+    line-height: 1.55;
+  }
+
+  .resume-cta-banner {
+    padding: 1.25rem 1.1rem;
+  }
+
+  .resume-cta-banner h3 {
+    font-size: 1.05rem;
+  }
+
+  .resume-cta-banner p {
+    font-size: 0.86rem;
+  }
+
+  .resume-cta-banner .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .neu-faq-question {
+    padding: 1rem 1.1rem;
+    font-size: 0.92rem;
+    gap: 0.65rem;
+  }
+
+  .neu-faq-answer {
+    padding: 0 1.1rem 1.15rem;
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+
+  .contact-lead {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .contact-quick-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.6rem;
+  }
+
+  .contact-quick-actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+  }
+
+  .neu-contact-card {
+    padding: 0.95rem 1rem;
+    gap: 0.85rem;
+  }
+
+  .neu-contact-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.05rem;
+  }
+
+  .neu-contact-val {
+    font-size: 0.84rem;
+    word-break: break-all;
+    white-space: normal;
+    line-height: 1.35;
+  }
+
+  .neu-card-arrow {
+    font-size: 1rem;
+  }
+}
+
+/* Very Narrow Handsets (<= 360px, e.g. iPhone SE 1st Gen) */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 1.65rem;
+  }
+
+  .card-stack-viewport {
+    height: 500px;
+  }
+
+  .stack-card-inner {
+    padding: 1.1rem 0.95rem;
+  }
+
+  .stack-card-footer .btn {
+    flex: 1 1 100%;
+    width: 100%;
   }
 }
 
