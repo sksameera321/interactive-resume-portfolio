@@ -109,7 +109,8 @@ class FlowField {
 
   createParticles() {
     this.particles = [];
-    const count = Math.min(this.options.particleCount, Math.max(280, Math.floor((this.width * this.height) / 1800)));
+    const minParticles = this.width < 768 ? 140 : 280;
+    const count = Math.min(this.options.particleCount, Math.max(minParticles, Math.floor((this.width * this.height) / 2000)));
     const colors = this.getThemeConfig().particleColors;
 
     for (let i = 0; i < count; i++) {
