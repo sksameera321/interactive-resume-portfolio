@@ -254,16 +254,6 @@ body {
   margin-top: 0.2rem;
 }
 
-.cert-list {
-  list-style-type: disc;
-  margin-left: 1.15rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  font-size: 9.2pt;
-  color: var(--text-secondary);
-}
-
 /* Print Rules */
 @media print {
   @page {
