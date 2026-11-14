@@ -48,15 +48,15 @@
 
 ## Featured Engineering Projects
 
-| # | Project | Description | Tech Stack | Repository | Video Demo |
+| # | Project | Description | Tech Stack | Repository | Live Demo |
 |:---:|:---|:---|:---|:---:|:---:|
 | 00 | **[Interactive Portfolio](https://sksameera321.github.io/interactive-resume-portfolio/)** | Tactile Neumorphic developer portfolio with Kokonut UI CardStack, FlowField wind canvas, and printable ATS resume | Vanilla JS, CSS3, HTML5, Canvas | [Code](https://github.com/sksameera321/interactive-resume-portfolio) | [Live Site](https://sksameera321.github.io/interactive-resume-portfolio/) |
-| 01 | **Amazon Storefront Clone** | High-fidelity e-commerce clone featuring product grids, search filtering, LocalStorage cart state, and checkout flows | HTML5, CSS3, JS, LocalStorage | [Code](https://github.com/sksameera321/my-amazon-project) | [0:15 Demo](https://drive.google.com/file/d/1vBxMT2haRQDCjNWgYsZ4KhKN909NZv04/view) |
-| 02 | **Restaurant Menu & Ordering System** | Interactive dining menu platform with food category navigation, dietary filtering, and dynamic pricing | HTML5, CSS Grid, JavaScript | [Code](https://github.com/sksameera321/my-kiya.in) | [0:24 Demo](https://drive.google.com/file/d/12rQlzYPinf89SOhVtE6lbwoPuD80IWwC/view) |
-| 03 | **Game Hub Arcade Portal** | Curated browser gaming portal with state tracking, interactive canvas/DOM rendering, and high scores | HTML5, CSS3, JavaScript | [Code](https://github.com/sksameera321/hub) | [0:21 Demo](https://drive.google.com/file/d/1Ia3XCRzb9veiDdnWv--5ELKrrxatajaT/view) |
-| 04 | **AI Tools Directory Hub** | Curated developer directory aggregating modern AI tools with dynamic search and model capabilities | HTML5, CSS3, JavaScript | [Code](https://github.com/sksameera321/Ai-hub) | [0:20 Demo](https://drive.google.com/file/d/1sZB9c1j2Q6eUAvfUvzlQ_1pTnuAzO-9f/view) |
-| 05 | **Interactive Rock Paper Scissors Game** | Interactive browser game featuring algorithmic move randomization, score persistence, and CSS animations | HTML5, CSS3, JavaScript | [Code](https://github.com/sksameera321/my-game-project) | [0:31 Demo](https://drive.google.com/file/d/10ZMaAQo4xXNs3P36zQYvPwB21Pd2r3Fh/view) |
-| 06 | **Multi-Project Walkthrough Reel** | Comprehensive walkthrough video covering multiple frontend projects and UI engineering workflows | UI/UX & Web Development | — | [0:37 Reel](https://drive.google.com/file/d/1OWFJUhRv1ZI_E-PanuBKt-h2xUL3qeXV/view) |
+| 01 | **[LEARNOVA LMS](https://sksameera321.github.io/learnova-lms/)** | Next-gen LMS featuring video theatre, note scratchpad, quiz engine (75% pass mark), and diploma generator | React 19, Vite, React Router, LocalStorage | [Code](https://github.com/sksameera321/learnova-lms) | [Live App](https://sksameera321.github.io/learnova-lms/) |
+| 02 | **[NOVA Atelier](https://sksameera321.github.io/nova-ecommerce/)** | Luxury digital salon e-commerce application with DummyJSON API, INR (₹) currency, and physical UI controls | React 19, Vite, Context API, CSS3 | [Code](https://github.com/sksameera321/nova-ecommerce) | [Live App](https://sksameera321.github.io/nova-ecommerce/) |
+| 03 | **[Savoria Culinary](https://sksameera321.github.io/recipe-discovery/)** | Recipe discovery platform with dynamic serving scaler, interactive prep checklist, and fullscreen Cook Mode | HTML5, CSS3, Vanilla JS, DummyJSON | [Code](https://github.com/sksameera321/recipe-discovery) | [Live App](https://sksameera321.github.io/recipe-discovery/) |
+| 04 | **[Atmosphere](https://sksameera321.github.io/weather-application/)** | Real-time weather explorer querying Open-Meteo REST API live with dynamic solar arcs and extended forecasts | HTML5, CSS Grid, Vanilla JS Modules | [Code](https://github.com/sksameera321/weather-application) | [Live App](https://sksameera321.github.io/weather-application/) |
+| 05 | **[FocusFlow OS](https://sksameera321.github.io/personal-productivity-dashboard/)** | Academic productivity OS with Frosted Glassmorphism, Pomodoro timer, Eisenhower matrix, and habit tracking | HTML5, CSS3, Vanilla JS, LocalStorage | [Code](https://github.com/sksameera321/personal-productivity-dashboard) | [Live App](https://sksameera321.github.io/personal-productivity-dashboard/) |
+| 06 | **Overview Reel** | Multi-project video walkthrough demonstrating UI components, animations, and dynamic state management | UI/UX & Web Development | — | [0:37 Reel](https://drive.google.com/file/d/1OWFJUhRv1ZI_E-PanuBKt-h2xUL3qeXV/view) |
 
 ---
 
